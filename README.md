@@ -1,3 +1,12 @@
+General
+-------
+
+This is a Vagrant Box containing Drupal7, Drupal8, Webgrind and phpmyadmin.
+
+I used https://www.drupal.org/project/vdd as a starting point and added provision scripts for automatically downloading and installing Drupal7 and Drupal8. 
+
+Also this setup uses vagrant-hostmanager to automatically add vHost entries to your host envirenment.
+
 Vagrant Drupal Development
 --------------------------
 
