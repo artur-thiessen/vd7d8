@@ -1,6 +1,6 @@
 {
   "vm": {
-    "ip": "192.168.44.44",
+    "ip": "192.168.88.88",
     "memory": "1024",
     "synced_folders": [
       {
@@ -14,6 +14,7 @@
   "vdd": {
     "sites": {
       "drupal8": {
+        "install_script": "chef/shell/installd8.sh",
         "account_name": "root",
         "account_pass": "root",
         "account_mail": "box@example.com",
@@ -26,6 +27,7 @@
         }
       },
       "drupal7": {
+        "install_script": "chef/shell/installd7.sh",
         "account_name": "root",
         "account_pass": "root",
         "account_mail": "box@example.com",

@@ -51,14 +51,18 @@ Vagrant.configure("2") do |config|
     chef.add_role "vdd"
   end
 
+  # Hostmanager Config
   config.hostmanager.enabled = true
   config.hostmanager.manage_host = true
-  config.hostmanager.aliases = [ "drupal7.dev", "www.drupal7.dev", "drupal8.dev", "www.drupal8.dev" ]
+  config.hostmanager.aliases = []
+  config_json["vdd"]["sites"].each do |site|
+    config.hostmanager.aliases.push( site[1]["vhost"]["url"], site[1]["vhost"]["alias"] )
+  end
 
-  # Install d7/d8
-  config.vm.provision :shell, :path => "chef/shell/installd7.sh"
-  config.vm.provision :shell, :path => "chef/shell/installd8.sh"
-
+  # Install Scripts
+  config_json["vdd"]["sites"].each do |site|
+    config.vm.provision :shell, :path => site[1]["install_script"]
+  end
 
   # Run final shell script.
   config.vm.provision :shell, :path => "chef/shell/final.sh", :args => config_json["vm"]["ip"]
